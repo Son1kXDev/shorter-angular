@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+  --dark: #222222;
+  --dark-transparent: rgba(34, 34, 34, 0.8);
+  --brand: #15AABF;
+  --light: #EEEEEE;
+  --light-transparent: rgba(238, 238, 238, 0.8);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: var(--dark);
+}

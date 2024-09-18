@@ -14,6 +14,13 @@ export class AppComponent implements OnInit{
   isLoading = false;
   shortLink = '';
 
+  reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
+  formBuilder = inject(FormBuilder);
+
+  shorter = this.formBuilder.group({
+    inputURL:['',[Validators.required, Validators.pattern(this.reg)]]
+  })
+
   onSubmitForm(){
   }
 

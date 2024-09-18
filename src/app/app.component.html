@@ -1,15 +1,21 @@
 <div class="container">
   <h1>Сокращение <span class="brand-text">длинных</span> ссылок</h1>
   <h2>Это не только <span class="brand-text">удобно</span>, но ещё и <span class="brand-text">красиво</span>!</h2>
-  <form class="shorter-form" ngForm="shorter" (ngSubmit)="onSubmitForm()" autocomplete="off">
-    <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="url" name="inputURL" placeholder="Введите ссылку..." required></textarea>
+  <form (ngSubmit)="onSubmitForm()" autocomplete="off" class="shorter-form wrapper" ngForm="shorter">
+    <textarea name="inputURL" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+              placeholder="Введите ссылку..."
+              required type="url"></textarea>
     <button *ngIf="!isLoading" type="submit">Сократить</button>
-    <button *ngIf="isLoading" type="submit"><img src="icons/loader.svg" alt="copy"/></button>
+    <button *ngIf="isLoading" class="loading" disabled type="button"><img alt="copy" src="icons/loader-animated.svg"/>
+    </button>
   </form>
 
   <button *ngIf="!shortLink" disabled>*Здесь будет ваша ссылка*</button>
 
-  <button *ngIf="shortLink"><span>{{shortLink}} </span><img src="icons/copy.svg" alt="copy"/></button>
-  <button *ngIf="shortLink"><span>Заново </span><img src="icons/refresh.svg" alt="copy"/></button>
+  <div *ngIf="shortLink" class="wrapper">
+    <button><span>{{ shortLink }}</span><img alt="copy" src="icons/copy.svg"/></button>
+    <button><span>Заново</span><img alt="copy" src="icons/refresh.svg"/></button>
+  </div>
 
 </div>
+

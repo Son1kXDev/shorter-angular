@@ -7,13 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   http = inject(HttpClient);
-  private readonly baseUrl = 'https://api.shorter.danyatochka.ru/';
+  private readonly baseUrl = 'https://api-shorter.danyatochka.ru/';
 
   getURL(code: string): Observable<string> {
-    return new Observable<string>();
+    return this.http.get<string>(this.baseUrl + `url?code=${code}`);
   }
 
   generateUrl(url: string): Observable<string> {
-    return this.http.post<string>(this.baseUrl + 'short_url', url);
+    const formData = new FormData();
+    formData.append('input', url);
+
+    return this.http.post<string>(this.baseUrl + 'short_url', formData);
   }
 }

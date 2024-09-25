@@ -1,0 +1,136 @@
+.container {
+  margin-top: 200px;
+  margin-inline: auto;
+  width: 50%;
+  font-family: Inter, sans-serif;
+  color: var(--light);
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 38px;
+  padding-bottom: 10px;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.brand-text {
+  color: var(--brand);
+}
+
+.shorter-form {
+  padding-block: 40px;
+  width: 100%;
+
+  textarea[type="url"] {
+    width: 100%;
+    max-width: 800px;
+    height: 48px;
+    border-radius: 16px;
+    border: 2px solid var(--dark);
+    padding: 14px 20px;
+    background-color: var(--light-transparent);
+
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    resize: none;
+    overflow: hidden;
+    outline: none;
+    transition: .2s;
+  }
+
+  textarea[type=url]:hover {
+    border: 2px solid var(--brand);
+    transition: .2s;
+  }
+
+  textarea[type=url]:focus {
+    border: 2px solid var(--brand);
+    background-color: var(--light);
+    transition: .2s;
+  }
+
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 126px;
+  height: 48px;
+  border-radius: 16px;
+  background-color: var(--brand);
+  color: var(--light);
+  padding: 14px 20px;
+  gap: 10px;
+  border: var(--dark) 2px solid;
+  text-align: center;
+
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  cursor: pointer;
+
+  img {
+    width: 20px;
+    height: 20px;
+    filter: invert(98%) sepia(25%) saturate(183%) hue-rotate(230deg) brightness(114%) contrast(87%);
+  }
+
+  span {
+    vertical-align: top;
+  }
+
+  transition: .2s;
+
+}
+
+button:hover {
+  border-color: var(--brand);
+  transition: .2s;
+
+}
+
+button:active {
+  border-color: var(--brand);
+  background-color: var(--light);
+  color: var(--brand);
+
+  img {
+    filter: invert(64%) sepia(32%) saturate(6702%) hue-rotate(148deg) brightness(93%) contrast(84%);
+  }
+
+  transition: .2s;
+
+}
+
+button:disabled {
+  background-color: var(--light-transparent);
+  color: var(--brand);
+  border: var(--brand) 1px dashed;
+
+  cursor: not-allowed;
+}
+
+button.loading {
+  background-color: var(--brand);
+  color: var(--light);
+  border: var(--dark) 2px solid;
+
+  cursor: wait;
+}

@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -12,18 +11,20 @@ import { ApiService } from '../../services/api.service';
 })
 export class UrlComponent implements OnInit {
   route = inject(ActivatedRoute);
-
-  url$: Observable<string> = new Observable<string>();
-  code: string | null = '';
-
+  router = inject(Router);
   service = inject(ApiService);
 
   ngOnInit(): void {
-    this.url$ = this.route.paramMap.pipe(
-      switchMap((params) => {
-        this.code = params.get('code');
-        return this.service.getURL(this.code as string);
-      }),
-    );
+    this.service
+      .getURL(this.route.snapshot.paramMap.get('code') as string)
+      .subscribe({
+        next: (url) => {
+          window.location.href = url;
+        },
+        error: (err) => {
+          console.error(err);
+          this.router.navigate(['/']);
+        },
+      });
   }
 }

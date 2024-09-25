@@ -51,7 +51,7 @@ export class HomeComponent {
 
     this.api.generateUrl(this.inputURL.value).subscribe(
       (data) => {
-        this.shortLink = data;
+        this.shortLink = window.location.href + data;
         this.isLoading = false;
       },
       (error) => {
@@ -69,7 +69,7 @@ export class HomeComponent {
   }
 
   copy() {
-    navigator.clipboard.writeText(window.location.href + this.shortLink);
+    navigator.clipboard.writeText(this.shortLink);
     this.toastrService.success('Ссылка скопированна в буфер обмена');
   }
 }

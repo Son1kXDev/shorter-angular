@@ -14,7 +14,8 @@
   <button *ngIf="!shortLink" disabled>*Здесь будет ваша ссылка*</button>
 
   <div *ngIf="shortLink && !isLoading" class="wrapper">
-    <button (click)="copy()"><span>{{ shortLink }}</span><img alt="copy" src="icons/copy.svg"/></button>
+    <button (click)="copy()"><span>{{ shortLink.replace('https://', '') }}</span><img alt="copy" src="icons/copy.svg"/>
+    </button>
     <button (click)="clear()"><span>Заново</span><img alt="copy" src="icons/refresh.svg"/></button>
   </div>
 

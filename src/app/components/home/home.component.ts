@@ -38,12 +38,12 @@ export class HomeComponent {
 
   onSubmitForm() {
     if (this.inputURL.hasError('required')) {
-      this.showError('URL is required');
+      this.showError('Требуется указать ссылку');
       return;
     }
 
     if (!URL.canParse(this.inputURL.value)) {
-      this.showError('Invalid URL');
+      this.showError('Недопустимая ссылка');
       return;
     }
 
@@ -56,7 +56,7 @@ export class HomeComponent {
       },
       (error) => {
         this.isLoading = false;
-        this.showError('Failed to generate short URL');
+        this.showError('Не удалось сгенерировать короткую ссылку');
         console.error(error);
       },
     );
@@ -70,6 +70,6 @@ export class HomeComponent {
 
   copy() {
     navigator.clipboard.writeText(window.location.href + this.shortLink);
-    this.toastrService.success('URL copied to clipboard');
+    this.toastrService.success('Ссылка скопированна в буфер обмена');
   }
 }

@@ -7,10 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   http = inject(HttpClient);
+  private readonly baseUrl = 'https://api.shorter.danyatochka.ru/';
 
-  private baseUrl = 'https://api.shorter.danyatochka.ru/urls';
-
-  getUrl(code: string): Observable<string> {
+  getURL(code: string): Observable<string> {
     return new Observable<string>();
+  }
+
+  generateUrl(url: string): Observable<string> {
+    return this.http.post<string>(this.baseUrl + 'short_url', url);
   }
 }

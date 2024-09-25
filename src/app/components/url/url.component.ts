@@ -22,7 +22,7 @@ export class UrlComponent implements OnInit {
     this.url$ = this.route.paramMap.pipe(
       switchMap((params) => {
         this.code = params.get('code');
-        return this.service.getUrl(this.code as string);
+        return this.service.getURL(this.code as string);
       }),
     );
   }

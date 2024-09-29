@@ -134,3 +134,64 @@ button.loading {
 
   cursor: wait;
 }
+
+.long-code {
+  display: inline;
+}
+
+.short-code {
+  display: none;
+}
+
+/*
+full: 1500+
+medium: 1024 - 1499
+small: 340 - 1023
+*/
+
+@media (max-width: 1499px) {
+
+  .container {
+    margin-inline: auto;
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  h2 {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  textarea[type="url"] {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1023px) {
+
+  h1 {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  h2 {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .long-code {
+    display: none;
+  }
+
+  .short-code {
+    display: inline;
+  }
+}

@@ -28,6 +28,7 @@ import { AutosizeModule } from 'ngx-autosize';
 export class HomeComponent {
   isLoading = false;
   shortLink = '';
+  code: string = '';
 
   shorter = new FormGroup({
     inputURL: new FormControl<string>('', [Validators.required]),
@@ -54,7 +55,9 @@ export class HomeComponent {
 
     this.api.generateUrl(this.inputURL.value).subscribe(
       (data) => {
-        this.shortLink = window.location.href + data;
+        this.code = data;
+        this.shortLink =
+          window.location.href.replace(/(https?):\/\//, '') + this.code;
         this.isLoading = false;
       },
       (error) => {
@@ -67,6 +70,7 @@ export class HomeComponent {
 
   clear() {
     this.shortLink = '';
+    this.code = '';
     this.isLoading = false;
     this.inputURL.reset();
   }

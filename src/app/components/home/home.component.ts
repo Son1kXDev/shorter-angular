@@ -76,7 +76,16 @@ export class HomeComponent {
   }
 
   copy() {
-    navigator.clipboard.writeText(this.shortLink);
-    this.toastrService.success('Ссылка скопированна в буфер обмена');
+    navigator.clipboard
+      .writeText(this.shortLink)
+      .then(() => {
+        this.toastrService.success('Ссылка скопированна в буфер обмена');
+      })
+      .catch((Error) => {
+        this.toastrService.error(
+          'Не удалось скопировать ссылку в буфер обмена',
+        );
+        console.error(Error);
+      });
   }
 }

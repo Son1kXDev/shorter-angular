@@ -39,18 +39,14 @@ export class HomeComponent {
     return this.shorter.controls.inputURL as FormControl;
   }
 
-  showError(msg: string) {
-    this.toastrService.error(msg);
-  }
-
   onSubmitForm() {
     if (this.inputURL.hasError('required')) {
-      this.showError('Требуется указать ссылку');
+      this.toastrService.error('Требуется указать ссылку');
       return;
     }
 
     if (!URL.canParse(this.inputURL.value)) {
-      this.showError('Недопустимая ссылка');
+      this.toastrService.error('Недопустимая ссылка');
       return;
     }
 
@@ -63,7 +59,7 @@ export class HomeComponent {
       },
       (error) => {
         this.isLoading = false;
-        this.showError('Не удалось сгенерировать короткую ссылку');
+        this.toastrService.error('Не удалось сгенерировать короткую ссылку');
         console.error(error);
       },
     );

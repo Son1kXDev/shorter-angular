@@ -4,10 +4,11 @@
   <form (ngSubmit)="onSubmitForm()" [formGroup]="shorter"
         autocomplete="off"
         class="shorter-form wrapper">
-    <textarea [minRows]="1" autosize formControlName="inputURL"
+    <textarea (keydown.enter)="onSubmitForm();false" [minRows]="1" autosize formControlName="inputURL"
               name="inputURL"
               placeholder="Введите ссылку..."
-              required type="url"></textarea>
+              required type="url"
+    ></textarea>
     <button *ngIf="!isLoading" type="submit">Сократить</button>
     <button *ngIf="isLoading" class="loading" disabled type="button"><img alt="copy" src="icons/loader-animated.svg"/>
     </button>
@@ -16,7 +17,10 @@
   <button *ngIf="!shortLink" disabled>*Здесь будет ваша ссылка*</button>
 
   <div *ngIf="shortLink && !isLoading" class="wrapper">
-    <button (click)="copy()"><span>{{ shortLink.replace('https://', '') }}</span><img alt="copy" src="icons/copy.svg"/>
+    <button (click)="copy()">
+      <span class="long-code">{{ shortLink }}</span>
+      <span class="short-code">{{ code }}</span><img alt="copy"
+                                                     src="icons/copy.svg"/>
     </button>
     <button (click)="clear()"><span>Заново</span><img alt="copy" src="icons/refresh.svg"/></button>
   </div>

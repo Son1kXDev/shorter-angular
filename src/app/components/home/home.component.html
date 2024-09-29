@@ -1,9 +1,11 @@
 <div class="container">
   <h1>Сокращение <span class="brand-text">длинных</span> ссылок</h1>
   <h2>Это не только <span class="brand-text">удобно</span>, но ещё и <span class="brand-text">красиво</span>!</h2>
-  <form (ngSubmit)="onSubmitForm()" [formGroup]="shorter" autocomplete="off" class="shorter-form wrapper">
-    <textarea formControlName="inputURL" name="inputURL"
-              oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+  <form (ngSubmit)="onSubmitForm()" [formGroup]="shorter"
+        autocomplete="off"
+        class="shorter-form wrapper">
+    <textarea [minRows]="1" autosize formControlName="inputURL"
+              name="inputURL"
               placeholder="Введите ссылку..."
               required type="url"></textarea>
     <button *ngIf="!isLoading" type="submit">Сократить</button>

@@ -10,11 +10,18 @@ import {
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../../services/api.service';
 import { RouterOutlet } from '@angular/router';
+import { AutosizeModule } from 'ngx-autosize';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, NgIf, FormsModule, ReactiveFormsModule],
+  imports: [
+    RouterOutlet,
+    NgIf,
+    FormsModule,
+    ReactiveFormsModule,
+    AutosizeModule,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

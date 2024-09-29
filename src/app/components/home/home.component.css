@@ -1,6 +1,7 @@
 .container {
   margin-top: 200px;
   margin-inline: auto;
+  min-width: 946px;
   width: 50%;
   font-family: Inter, sans-serif;
   color: var(--light);
@@ -153,6 +154,8 @@ small: 340 - 1023
 
   .container {
     margin-inline: auto;
+    max-width: 940px;
+    min-width: 200px;
     width: 90%;
   }
 

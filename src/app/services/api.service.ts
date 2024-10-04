@@ -9,6 +9,10 @@ export class ApiService {
   http = inject(HttpClient);
   private readonly baseUrl = 'https://api-shorter.danyatochka.ru/';
 
+  getToken(): Observable<{ token: string }> {
+    return this.http.get<{ token: string }>(this.baseUrl);
+  }
+
   getURL(code: string): Observable<string> {
     return this.http.get<string>(this.baseUrl + `url?code=${code}`);
   }

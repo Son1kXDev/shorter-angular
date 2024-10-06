@@ -4,7 +4,11 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
-import { provideHttpClient } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
+import { httpInterceptorProviders } from './helpers/api.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimations(),
     provideToastr(),
-    provideHttpClient(),
+    provideHttpClient(withInterceptorsFromDi()),
+    httpInterceptorProviders,
   ],
 };
